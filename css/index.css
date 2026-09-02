@@ -1,0 +1,18 @@
+.hw {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: orange;
+    align-content: center;
+}
+
+.text{
+    color:black;
+    margin-left:10%;
+    margin-right:10%;
+    font-size: 20;
+}
+
+.tab {
+    margin-left:50
+}

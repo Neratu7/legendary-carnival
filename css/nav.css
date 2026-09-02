@@ -1,0 +1,275 @@
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+.active {
+    background-color: darkgreen;
+    color:darkgreen;
+    border-bottom: 1px solid black;
+    
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: lightgray;
+  color:black;
+    border-bottom: 1px solid black;
+}
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: darkgray;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+    border-bottom: 1px solid #555;
+    border-right: 1px solid #555;
+    border-left:   1px solid #555;
+   
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+body {
+    background-color: lightgray;
+}
+
+
+
+/*
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+HTML STUFF
+
+<div class="nav">
+            <ul>
+                <div class ="links">
+                <li><a href = "home.html">Home</a></li>
+                <li><a href = "experience.html">Experience</a></li>
+                <li><a href = "contact.html">Contact Me</a></li>
+                <li><a href = "example.html">Examples</a></li>
+                    
+
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Dropdown</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                        </div>
+                    </li>
+                    
+                    
+                
+            <div class="contact">    
+                <li><a href = "https://www.facebook.com/john.c.10">Facebook</a></li>
+                <li><a href = "https://www.linkedin.com/in/john-campbell-47b778180/">Linkedin</a></li>
+                <li><a href = "https://www.dice.com/profile/publicview/2ad5f20608b2d19bb7393210ce5edce3">Dice</a></li>
+                <li><a href = "https://github.com/JohnCCampbell">Github</a></li>
+                <li><a href = "mailto:johnc.campbell7@gmail.com" img src="closedEmail.png" >Email</a></li>
+            </div> 
+                  </div>  
+            </ul>
+                
+        </div>
+
+
+
+
+/*
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;  
+    width: 100%;
+    background-color: palegoldenrod;
+    border: 1px solid #555;
+    height: 36px;
+    position: fixed;
+    top: 0;
+    overflow: auto;
+}
+
+.nav li {
+    float:left;
+    display: inline;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    border-right: 1px solid #555;
+    border-left:   1px solid #555;
+    border-top: 1px solid #555;
+}
+
+.nav li a {
+  display: block;
+  width: 80px;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center
+
+}
+
+.nav li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+
+
+
+
+.links a{
+    background-color: blanchedalmond;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: orangered;
+}
+
+.contact li{
+    float:right;
+    background-color: aquamarine;
+}
+
+body {
+    background-color: lightgray;
+}
+
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

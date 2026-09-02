@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conway's Game of Life</title>
+
+    <script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+</head>
+
+<body>
+<script type="module">
+
+    console.log("Page script started");
+
+    await cheerpjInit({version: 17});
+
+    console.log("CheerpJ initialized");
+
+    cheerpjCreateDisplay(500, 500);
+
+    console.log("Display created");
+
+    const exitCode =
+        await cheerpjRunJar("/app/html/conway/Conway.jar");
+
+    console.log("Exit code: " + exitCode);
+
+</script>
+
+</body>
+</html>
