@@ -1,0 +1,17 @@
+.code
+{
+    background-color: #1e1e1e;
+    color: #eeeeee;
+
+    border: 2px solid #555;
+    border-radius: 8px;
+
+    padding: 20px;
+    margin: 20px 0;
+
+    max-height: 500px;
+	max-width: 500px;
+    overflow: auto;
+
+    font-family: Consolas, monospace;
+}

@@ -3,6 +3,12 @@ var on;
 var off;
 var state;
 
+setInterval(function()
+{
+    const now = new Date();
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString();
+}, 1000);
 
 
 $(document).ready(function()       

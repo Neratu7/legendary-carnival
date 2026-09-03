@@ -5,7 +5,8 @@
 
 
         
-        <link rel="stylesheet" type="text/css" href="../css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../css/jss.css">
             
         <title>
             John Campbell
@@ -44,7 +45,7 @@
     </head>
     
     <body>
-    
+    	<p id="clock"></p>
      
         <button id="flick">Flick on</button>
         <button id="on">Turn on</button>
@@ -53,14 +54,239 @@
 
         <button id="off">Turn off</button>
         
-
+	
         
 
-        
-        
-        
-        
+        <h2>BitBurner Scripts</h2>
+        <h3>wormMother.js</h3>
+        <pre class="code">
+			<code>
+export async function main(ns) {
+	const worm = "worm.js";
+	const hackScript = "wormHack.js";
+	const growScript = "wormGrow.js";
+	const weakenScript = "wormWeaken.js";
 
+	while (true) {
+		const servers = scanAll(ns, "home");
+
+		for (const server of servers) {
+			if (server === "home") continue;
+			if (server.startsWith("hacknet-server-")) continue;
+
+
+			tryRoot(ns, server);
+
+			if (!ns.hasRootAccess(server)) continue;
+			if (ns.getServerMaxRam(server) <= 0) continue;
+
+			await ns.scp(worm, server);
+			await ns.scp(hackScript, server);
+			await ns.scp(growScript, server);
+			await ns.scp(weakenScript, server);
+
+			if (!ns.isRunning(worm, server)) {
+				ns.exec(worm, server, 1);
+				ns.print("Deployed worm to " + server);
+			}
+		}
+
+		await ns.sleep(10000);
+	}
+}
+
+function scanAll(ns, start) {
+	const found = [];
+	const visited = new Set();
+	const queue = [start];
+
+	while (queue.length > 0) {
+		const server = queue.shift();
+
+		if (visited.has(server)) continue;
+
+		visited.add(server);
+		found.push(server);
+
+		for (const neighbor of ns.scan(server)) {
+			if (!visited.has(neighbor)) {
+				queue.push(neighbor);
+			}
+		}
+	}
+
+	return found;
+}
+
+function tryRoot(ns, server) {
+	if (ns.hasRootAccess(server)) return;
+
+	if (ns.fileExists("BruteSSH.exe", "home")) ns.brutessh(server);
+	if (ns.fileExists("FTPCrack.exe", "home")) ns.ftpcrack(server);
+	if (ns.fileExists("relaySMTP.exe", "home")) ns.relaysmtp(server);
+	if (ns.fileExists("HTTPWorm.exe", "home")) ns.httpworm(server);
+	if (ns.fileExists("SQLInject.exe", "home")) ns.sqlinject(server);
+
+	if (countOpeners(ns) >= ns.getServerNumPortsRequired(server)) {
+		ns.nuke(server);
+	}
+}
+
+function countOpeners(ns) {
+	let count = 0;
+
+	if (ns.fileExists("BruteSSH.exe", "home")) count++;
+	if (ns.fileExists("FTPCrack.exe", "home")) count++;
+	if (ns.fileExists("relaySMTP.exe", "home")) count++;
+	if (ns.fileExists("HTTPWorm.exe", "home")) count++;
+	if (ns.fileExists("SQLInject.exe", "home")) count++;
+
+	return count;
+}
+
+
+			</code>
+		</pre>
+		<h3>worm.js</h3>
+        <pre class="code">
+			<code>
+
+export async function main(ns) {
+    const host = ns.getHostname();
+		const hackScript = "wormHack.js";
+		const growScript = "wormGrow.js";
+		const weakenScript = "wormWeaken.js";
+			
+
+		while(true)
+		{
+
+		const target = findBestTarget(ns);
+			if (target == null)
+			{
+				ns.print("NO VALID TARGET FOUND");
+				await ns.sleep(10000);
+				continue;
+			}
+
+
+			const minSec = ns.getServerMinSecurityLevel(target);
+			const curSec = ns.getServerSecurityLevel(target);
+			const maxMoney = ns.getServerMaxMoney(target);
+			const curMoney = ns.getServerMoneyAvailable(target);
+			
+
+			if (curSec>minSec+1)
+			{
+				runMax(ns, host, weakenScript, target);
+				await ns.sleep(ns.getWeakenTime(target)+Math.floor(Math.random() * 100));
+			}
+			else if (curMoney < maxMoney * .8)
+			{
+				runMax(ns,host,growScript, target);
+				await ns.sleep(ns.getGrowTime(target)+Math.floor(Math.random() * 100))
+			}
+			else
+			{
+				runMax(ns,host,hackScript,target);
+				await ns.sleep(ns.getHackTime(target)+Math.floor(Math.random() * 100))
+			}
+		}
+
+}
+
+function runMax(ns, host, script, target)
+{
+	const freeRam = ns.getServerMaxRam(host) - ns.getServerUsedRam(host);
+	const scriptRam = ns.getScriptRam(script);
+	const threads = Math.floor(freeRam/scriptRam);
+
+	if (threads > 0)
+	{
+		ns.exec(script, host, threads, target);
+	}
+
+}
+
+function findBestTarget(ns)
+{
+	const servers = scanAll(ns,"home");
+	
+	let bestServer = null;
+	let bestMoney = 0;
+
+	for (const server of servers)
+	{
+		if (server === "home") continue;
+		if (server.startsWith("hacknet-server")) continue;
+		if (!ns.hasRootAccess(server)) continue;
+		if (ns.getServerRequiredHackingLevel(server) > ns.getHackingLevel()) continue;
+	
+	const maxMoney = ns.getServerMaxMoney(server);
+
+		if (maxMoney > bestMoney)
+		{
+			bestMoney = maxMoney;
+			bestServer = server;
+		}
+	}
+
+	return bestServer;
+}
+
+
+function scanAll(ns, start)
+{
+	const found = [];
+	const visited = new Set();
+	const queue = [start];
+
+	while (queue.length > 0)
+	{
+		const server = queue.shift();
+
+		if (visited.has(server)) continue;
+
+		visited.add(server);
+		found.push(server);
+
+		for (const neighbor of ns.scan(server))
+		{
+			if (!visited.has(neighbor))
+			{
+				queue.push(neighbor);
+			}
+		}
+	}
+
+	return found;
+}
+			</code>
+		</pre>
+		<h3>wormHack.js</h3>
+		        <pre class="code">
+			<code>
+export async function main(ns) {
+	await ns.hack(ns.args[0]);
+}
+			</code>
+		</pre>
+		<h3>wormGrow.js</h3>
+		        <pre class="code">
+			<code>
+export async function main(ns) {
+	await ns.grow(ns.args[0]);
+}
+			</code>
+		</pre>
+		<h3>wormWeaken.js</h3>
+		        <pre class="code">
+			<code>
+export async function main(ns) {
+	await ns.weaken(ns.args[0]);
+}
+			</code>
+		</pre>
     
     
 
