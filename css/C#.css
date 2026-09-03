@@ -1,0 +1,33 @@
+
+.conwaygame{
+    display: flex;
+    align-items: flex-start;
+    gap: 3%;
+	padding-right: 10%;
+}
+
+.conwaycomment{
+    flex: 1;
+}
+
+@media (max-width: 500px)
+{
+	.conwaygame
+	{
+        flex-direction: column;
+        padding: 0 3%;
+	}
+	
+	.conwaygame iframe
+	{    
+		width: 100%;
+        max-width: 550px;
+        height: 600px;
+	}
+	
+	.conwaycomment
+	{
+		width: 100%;
+	}
+		
+}

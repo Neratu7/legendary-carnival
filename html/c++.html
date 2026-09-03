@@ -8,8 +8,11 @@
         <link rel="stylesheet" type="text/css" href="../css/nav.css">
             
         <title>
-            John Campbell
+            C Projects
         </title>
+		
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/c#.css">
     
         
         <div class="navbar">
@@ -44,14 +47,22 @@
     </head>
     
     <body>
-		<iframe
-			src="/brickbreak/index.html"
-			width="960"
-			height="600"
-			style="border: none;"
-			allowfullscreen>
-		</iframe>
-		<p> Hello C++ !</p>
-    </body>
+		<div class="conwaygame">
+			<iframe
+				src="/brickbreak/index.html"
+				width="980"
+				height="660"
+				style="border: none;"
+				allowfullscreen>
+			</iframe>
+			<div class="conwaycomment">
+			<p> This Brick Break game was created in C# using the Unity game engine. The player controls a paddle to keep the ball in play while attempting to destroy the bricks on the screen.
+<br><br>
+				The game uses Unity's component-based system to manage the different objects within the scene. C# scripts control player input, ball movement, collisions, and changes to the game state as the player interacts with the environment.
+<br><br>
+				The finished Unity project was built for WebGL, allowing the game to be loaded and played directly through a web browser. This required preparing the Unity build for web deployment and integrating the resulting WebGL files into the website.</p>
+			</div>
+		</div>
+	</body>
     
 </html>

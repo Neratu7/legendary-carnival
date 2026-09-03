@@ -7,9 +7,9 @@
         
         <link rel="stylesheet" type="text/css" href="../css/nav.css">
             
-        <title>
-            John Campbell
-        </title>
+		<meta charset="UTF-8">
+		<title>Java Projects</title>
+		<link rel="stylesheet" href="../css/java.css">
     
         
         <div class="navbar">
@@ -43,15 +43,36 @@
         
     </head>
     
-    <body>
-    
-<iframe
-    src="/html/conway/conway.html"
-    width="700"
-    height="750"
-    style="border: none;">
-</iframe>
+    <body> 
 	
+		<div class="conwaygame">
+		
+			<iframe
+				src="/html/conway/conway.html"
+				width="700"
+				height="750"
+				style="border: none;">
+			</iframe>
+		
+		
+			<div class="conwaycomment">
+				<h2>
+						Conway's Game of Life
+				</h2>
+				
+				<p>
+						Conways classic 'Game of Life' has been recreated here in Java. 
+						<br>
+						The cellular automaton simulator is a simple but interesting way to explore how complexity can arise from simplicity.
+						<br>
+						<br>
+						This implementation uses a 100 × 100 grid of cells, with each generation calculated from the state of the cells surrounding it. The simulation can be started, paused, advanced one generation at a time, randomized, or cleared. Cells can also be drawn or erased directly with the mouse by either pressing the left mouse button and dragging to draw, or the right mouse button and dragging to erase.
+						<br>
+						<br>
+						Building the project involved separating the current and next generations, calculating neighboring cells while handling the edges of the grid, translating mouse coordinates into grid positions, and using Java Swing to handle the interface, rendering, and simulation timer.
+				</p>
+			</div>
+		</div>
     </body>
     
 </html>

@@ -8,8 +8,11 @@
         <link rel="stylesheet" type="text/css" href="../css/nav.css">
             
         <title>
-            John Campbell
+            Python Projects
         </title>
+		
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/java.css">
     
         
         <div class="navbar">
@@ -44,17 +47,27 @@
     </head>
     
     <body>
-    
 	<h2>Python Calculator</h2>
-	<iframe 
-		src="https://calculator-w3e1.onrender.com"
-		width="500"
-		height="500"
-		style="border: none;">
-	</iframe>
-	
-	<p>Hello</p>
-	
+		<div class="conwaygame">
+			
+				<iframe 
+					src="https://calculator-w3e1.onrender.com"
+					width="500"
+					height="500"
+					style="border: none;">
+				</iframe>
+				
+				<div class="conwaycomment">
+					<p>This calculator was written in Python and adapted into a web application using Flask. The project separates the calculation logic from the webpage itself, allowing the HTML interface to send user input to the Python backend and display the returned result.
+						<br>
+						<br>
+						The calculator supports basic arithmetic operations while also demonstrating how Python can be used server-side rather than only as a standalone desktop or console program.
+						<br>
+						<br>
+						Building this project involved handling form input, routing requests through Flask, separating application logic into multiple Python files, connecting HTML templates to Python, and deploying the Flask application to a web server so it could be embedded into this portfolio.</p>
+				</div>
+		</div>
+				
     </body>
     
 </html>
