@@ -48,3 +48,20 @@ button
     border: 1px solid #999;
     padding: 10px;
 }
+
+.guestbook-header
+{
+	display:flex;
+	align-item:center;
+	gap: 30px;
+}
+
+.guestbook-header h1
+{
+	margin: 0;
+}
+
+.visit-counter
+{
+	font-size: 18px;
+}

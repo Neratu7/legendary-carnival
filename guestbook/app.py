@@ -9,39 +9,6 @@ app.secret_key = os.environ["FLASK_SECRET_KEY"]
 
 
 
-@app.route("/counter")
-def counter():
-
-    connection = libsql.connect(
-        database=os.environ["TURSO_DATABASE_URL"],
-        auth_token=os.environ["TURSO_AUTH_TOKEN"]
-        )
-
-    cursor = connection.cursor()
-
-    cursor.execute("""
-        UPDATE VisitorCounter
-        SET Visit_count = Visit_Count+1
-        WHERE Counter_ID = 1
-    """)
-
-    connection.commit()
-
-    cursor.execute("""
-        SELECT Visit_Count
-        FROM VisitorCounter
-        WHERE Counter_ID = 1
-    """)
-
-    count = cursor.fetchone()[0]
-
-    connection.close()
-    
-    return render_template(
-        "counter.html",
-        count=count
-        )
-
 
 @app.route("/guestbook", methods=["GET", "POST"])
 def guestbook():
