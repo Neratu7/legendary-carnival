@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import sqlite3
+
 import os
+import libsql
 import time
 
 app = Flask(__name__)
-app.secret_key = "bork"
+app.secret_key = os.environ["FLASK_SECRET_KEY"]
 
 @app.route("/guestbook", methods=["GET", "POST"])
 
@@ -12,8 +13,25 @@ app.secret_key = "bork"
 
 def guestbook():
 
-    connection = sqlite3.connect("guestbook.db")
+    connection = libsql.connect(
+        database=os.environ["TURSO_DATABASE_URL"],
+        auth_token=os.environ["TURSO_AUTH_TOKEN"]
+    )
     cursor = connection.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS GuestBook
+        (
+            Comment_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            Name TEXT NOT NULL,
+            Comment TEXT NOT NULL,
+            Created_Date DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    connection.commit()
+
+
 
     if request.method == "POST":
         name = request.form["name"].strip()
