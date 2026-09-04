@@ -7,10 +7,40 @@ import time
 app = Flask(__name__)
 app.secret_key = os.environ["FLASK_SECRET_KEY"]
 
+
+
+@app.route("/counter")
+def counter():
+
+    connection = libsql.connect(
+        database=os.environ["TURSO_DATABASE_URL"],
+        auth_token=os.environ["TURSO_AUTH_TOKEN"]
+        )
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        UPDATE VisitorCounter
+        SET Visit_count = Visit_Count+1
+        WHERE Counter_ID = 1
+    """)
+
+    connection.commit()
+
+    cursor.execute("""
+        SELECT Visit_Count
+        FROM VisitorCounter
+        WHERE Counter_ID = 1
+    """)
+
+    count = cursor.fetchone()[0]
+
+    connection.close()
+    
+    return str(count)
+
+
 @app.route("/guestbook", methods=["GET", "POST"])
-
-
-
 def guestbook():
 
     connection = libsql.connect(
@@ -30,6 +60,31 @@ def guestbook():
     """)
 
     connection.commit()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS VisitorCounter
+        (
+            Counter_ID INTEGER PRIMARY KEY,
+            Visit_Count INTEGER NOT NULL
+        )
+    """)
+
+    connection.commit()
+
+    cursor.execute("""
+    INSERT OR IGNORE INTO VisitorCounter
+    (
+        Counter_ID,
+        Visit_Count
+    )
+    VALUES
+    (
+        1,
+            0
+        )
+    """)
+
+
 
 
 

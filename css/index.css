@@ -16,3 +16,22 @@
 .tab {
     margin-left:50
 }
+
+.home
+{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+}
+
+.home iframe
+{
+    width: 550px;
+    flex-shrink: 0;
+}
+
+.homecontent
+{
+    flex: 1;
+}
