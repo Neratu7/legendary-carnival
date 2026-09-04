@@ -10,15 +10,16 @@
     color:black;
     margin-left:10%;
     margin-right:10%;
-    font-size: 20;
+    font-size: 20px;
 }
 
 .tab {
-    margin-left:50
+    margin-left:50px;
 }
 
 .home
 {
+
     display: flex;
     align-items: flex-start;
     gap: 30px;
@@ -33,5 +34,6 @@
 
 .homecontent
 {
+
     flex: 1;
 }

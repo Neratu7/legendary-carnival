@@ -37,7 +37,10 @@ def counter():
 
     connection.close()
     
-    return str(count)
+    return render_template(
+        "counter.html",
+        count=count
+        )
 
 
 @app.route("/guestbook", methods=["GET", "POST"])
