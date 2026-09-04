@@ -87,7 +87,13 @@ def guestbook():
         )
     """)
 
+    cursor.execute("""
+    SELECT Visit_Count
+    FROM VisitorCounter
+    WHERE Counter_ID = 1
+""")
 
+    count = cursor.fetchone()[0]
 
 
 
@@ -144,7 +150,8 @@ def guestbook():
 
     return render_template(
         "guestbook.html",
-        entries=entries
+        entries=entries,
+        count=count
     )
 
 if __name__ == "__main__":
