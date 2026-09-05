@@ -17,23 +17,27 @@
     margin-left:50px;
 }
 
-.home
+@media (max-width: 900px)
 {
+	.home
+	{
 
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-    padding: 20px;
-}
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 30px;
+		padding: 20px;
+	}
 
-.home iframe
-{
-    width: 550px;
-    flex-shrink: 0;
-}
+	.home iframe
+	{
+		width: 100%;
+		max-width: 550px;
+		
+	}
 
-.homecontent
-{
-
-    flex: 1;
+	.homecontent
+	{
+		width:100%;
+	}
 }
