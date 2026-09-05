@@ -15,7 +15,35 @@
 
 .tab {
     margin-left:50px;
+
+	
 }
+
+.home
+{
+
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 30px;
+	padding: 20px;
+}
+
+.home iframe
+{
+	width:550px;
+	flex-shrink: 0;
+	
+}
+
+.homecontent
+{
+	flex: 1;
+	min-width: 0;
+}
+
+
+
 
 @media (max-width: 900px)
 {

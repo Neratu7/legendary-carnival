@@ -15,3 +15,36 @@
 
     font-family: Consolas, monospace;
 }
+
+    .split
+    {
+        display: flex;
+        align-items: flex-start;
+		flex-direction: row;
+        gap: 30px;
+    }
+	
+	.code
+	{
+		flex:1;
+	}
+	
+	.splitcontent
+	{
+		flex:1;
+	}
+}
+
+@media (max-width: 900px)
+{
+    .split
+    {
+        flex-direction: column;
+    }
+
+    .code,
+    .splitcontent
+    {
+        width: 100%;
+    }
+}

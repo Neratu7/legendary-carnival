@@ -58,9 +58,13 @@
         
 
         <h2>BitBurner Scripts</h2>
+		
         <h3>wormMother.js</h3>
-        <pre class="code">
-			<code>
+		<div class="split">
+		
+		<pre class="code"><code>
+		
+		
 export async function main(ns) {
 	const worm = "worm.js";
 	const hackScript = "wormHack.js";
@@ -147,9 +151,29 @@ function countOpeners(ns) {
 
 			</code>
 		</pre>
+		
+		<div class="splitcontent">
+		<br>
+		<br>
+			WormMother.js is the deployment and coordination script for the Bitburner automation system. 
+			<br>
+			<br>
+			It scans the full server network using breadth-first traversal, attempts to gain root access using the available cracking tools, 
+			<br>
+			copies the required worker scripts to usable servers, and launches a worm process when one is not already running. 
+			<br>
+			<br>
+			The script continuously rescans the network so newly accessible servers are automatically added to the system.
+
+		
+		</div>
+		</div>
 		<h3>worm.js</h3>
-        <pre class="code">
-			<code>
+		
+		<div class="split">
+		
+		<pre class="code"><code>
+		
 
 export async function main(ns) {
     const host = ns.getHostname();
@@ -263,30 +287,87 @@ function scanAll(ns, start)
 }
 			</code>
 		</pre>
+<div class="splitcontent">
+		<br>
+		<br>
+		Worm.js is the decision-making worker for the Bitburner automation system. Each deployed instance independently scans the network, 
+		<br>
+		selects the most valuable valid target, evaluates its security and available money, and chooses whether to weaken, grow, or hack it. 
+		<br>
+		<br>
+		The script dynamically allocates the host server’s available RAM to the selected task and uses operation timing with small randomized delays to keep distributed workers from remaining synchronized.
+		
+		
+		
+		</div>
+		</div>
 		<h3>wormHack.js</h3>
-		        <pre class="code">
-			<code>
+		<div class="split">
+		
+		<pre class="code"><code>
 export async function main(ns) {
 	await ns.hack(ns.args[0]);
-}
-			</code>
-		</pre>
+} 
+
+
+</code></pre>
+		
+			<div class="splitcontent">
+				<br>	
+				<br>
+
+				This is the Worm Hack payload.
+							<br>
+				Hack is used to take money from a server.
+			
+			</div>
+			
+		</div>
+			
+			
+			
+			
+			
 		<h3>wormGrow.js</h3>
-		        <pre class="code">
-			<code>
+		<div class="split">
+		
+		<pre class="code"><code>
 export async function main(ns) {
 	await ns.grow(ns.args[0]);
 }
-			</code>
-		</pre>
+		</code></pre>
+		
+			<div class="splitcontent">
+				<br>	
+				<br>
+
+This is the Worm Grow payload.
+			<br>
+Grow is used to increase the amount of money on a server.
+			</div>
+
+				</div>
 		<h3>wormWeaken.js</h3>
-		        <pre class="code">
-			<code>
-export async function main(ns) {
-	await ns.weaken(ns.args[0]);
-}
-			</code>
-		</pre>
+		<div class="split">
+		
+		<pre class="code"><code>
+		
+		
+	export async function main(ns) {
+		await ns.weaken(ns.args[0]);
+	}
+			</code></pre>
+		
+			<div class="splitcontent">
+				<br>	
+				<br>
+
+This is the Worm Weaken payload.
+			<br>
+Weaken is used to reduce the securty value of a server.
+			</div>
+		</div>
+	
     
     
 
