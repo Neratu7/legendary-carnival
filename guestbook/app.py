@@ -54,6 +54,16 @@ def guestbook():
         )
     """)
 
+    connection.commit()
+
+    cursor.execute("""
+    UPDATE VisitorCounter
+    SET Visit_Count = Visit_Count + 1
+    WHERE Counter_ID = 1
+""")
+
+    connection.commit()
+
     cursor.execute("""
     SELECT Visit_Count
     FROM VisitorCounter
