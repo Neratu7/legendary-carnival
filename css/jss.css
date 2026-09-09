@@ -35,12 +35,46 @@
 	}
 }
 
+
+.sphinx-area
+{
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+#riddleBox
+{
+	max-width: 300px;
+	padding: 15px;
+	border: 1px solid black;
+	background-color: white;
+}
+
+#answerArea
+{
+	margin-top: 10px;
+}
+
+#riddleAnswer
+{
+	padding: 8px;
+}
+
+#answerButton
+{
+	padding: 8px 12px;
+}
+
+
 #Door
 {
     width: 300px;
     height: auto;
     cursor: pointer;
 }
+
+
 
 @media (max-width: 900px)
 {

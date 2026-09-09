@@ -50,6 +50,7 @@
 		<audio id="doorSound" src="../Sounds/openDoor.mp3"></audio>
 		<audio id="lightOn" src="../Sounds/lightOn.mp3"></audio>
 		<audio id="lightOff" src="../Sounds/lightOff.mp3"></audio>
+		<audio id="talking" src="../Sounds/talking.mp3"></audio>
      
         <button id="flick">Flick on</button>
         <button id="on">Turn on</button>
@@ -62,6 +63,33 @@
 	<img id="Door"
 		 src="../Images/DoorClosed2.png"
 		 style="display:none; width:300px;">
+
+		 <div class = "sphinx-area">
+		 
+			<img id="Sphinx"
+				 src="../Images/Sphinx2.png"
+				 style="display:none; width:300px;">
+			<div id="riddleBox" style="display:none;">
+				<p>
+					What walks on four legs in the morning,
+					two legs at noon,
+					and three legs in the evening?
+				</p>
+			</div>
+		</div>
+		
+		<div id = "answerArea" style="display:none;">
+			<input id="riddleAnswer" type="text">
+			<button id="answerButton">Answer</button>
+		</div>
+
+		 
+
+		 
+			
+		 
+		 <div id="bitBurner" style="display:none">
+		 
 
         <h2>BitBurner Scripts</h2>
 		
@@ -375,7 +403,7 @@ Weaken is used to reduce the securty value of a server.
 		</div>
 	
     
-    
+    </div>
 
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
