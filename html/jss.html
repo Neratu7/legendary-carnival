@@ -46,6 +46,10 @@
     
     <body>
     	<p id="clock"></p>
+		
+		<audio id="doorSound" src="../Sounds/openDoor.mp3"></audio>
+		<audio id="lightOn" src="../Sounds/lightOn.mp3"></audio>
+		<audio id="lightOff" src="../Sounds/lightOff.mp3"></audio>
      
         <button id="flick">Flick on</button>
         <button id="on">Turn on</button>
@@ -297,7 +301,7 @@ function scanAll(ns, start)
 		selects the most valuable valid target, evaluates its security and available money, and chooses whether to weaken, grow, or hack it. 
 		<br>
 		<br>
-		The script dynamically allocates the host server’s available RAM to the selected task and uses operation timing with small randomized delays to keep distributed workers from remaining synchronized.
+		The script dynamically allocates the host server's available RAM to the selected task and uses operation timing with small randomized delays to keep distributed workers from remaining synchronized.
 		
 		
 		
