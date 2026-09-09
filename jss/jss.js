@@ -31,13 +31,9 @@ $(document).ready(function()
     off = "../Images/pic_bulboff.gif";
 	doorClosed = "../Images/DoorClosed2.png";
 	doorOpen = "../Images/OpenDoor2.png";
-	//sphinx = "../Images/Sphinx2.png";
 
-    /*
-    var garb = state;
-    
-    thing.innerHTML="JSS WORKS!";
-    */
+
+
     $("#on").click(function()
         {
         document.getElementById("myImage").src= on;
