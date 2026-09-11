@@ -74,11 +74,7 @@
     cursor: pointer;
 }
 
-#clock2
-{
-margin-left:auto;
-padding-right:15px;	
-}
+
 
 @media (max-width: 900px)
 {

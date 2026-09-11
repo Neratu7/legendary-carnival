@@ -4,6 +4,16 @@
   background-color: #333;
   font-family: Arial;
 }
+
+#clock2
+{
+    position: absolute;
+    right: 16px;
+	top: 22px;
+    color: white;
+}
+
+
 .active {
     background-color: darkgreen;
     color:darkgreen;
@@ -96,7 +106,6 @@ body {
 		padding: 16px 18px;
 	}
 }
-
 
 
 
